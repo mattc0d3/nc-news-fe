@@ -9,3 +9,82 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+#app-container {
+  border: 2px solid black;
+  height: 90vh;
+  width: 60vw;
+  margin: auto;
+}
+
+#header-container {
+  border: 2px solid purple;
+  height: 10%;
+}
+
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15%;
+  font-size: 1.2rem;
+}
+
+#navbar-container {
+  border: 2px solid blue;
+  height: 10%;
+}
+
+#searchbar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#searchbar * {
+  margin: 0 5px;
+  font-size: 1.2rem;
+}
+
+#searchbar-container {
+  border: 2px solid green;
+  height: 10%;
+}
+
+#strapline {
+  font-weight: normal;
+  font-size: 1.2rem;
+  margin-top: 0;
+}
+
+#welcome-header {
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.logo {
+  color: red;
+}
+
+.page-content {
+  border: 2px solid red;
+  height: 70%;
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  }
+
+a {
+  text-decoration: none;
+  color: black
+}
+
+li {
+  list-style: none;
+}
