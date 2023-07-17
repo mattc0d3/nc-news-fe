@@ -1,22 +1,27 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import NavBar from './components/NavBar'
 import Header from './components/Header'
-import SearchBar from './components/SearchBar'
 import Home from './components/Home'
+import getTopics from './utils/getTopics'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [topics, setTopics] = useState([])
+
+  useEffect(() => {
+    getTopics().then(data => {
+      setTopics(data)
+    })
+  }, [])
 
   return (
     <main id="app-container">
       < NavBar />
       < Header />
       < Routes >
-        < Route path="/" element={< Home />} />
+        < Route path="/" element={< Home topics={topics}/>} />
       </Routes>
-      < SearchBar />
     </main>
   )
 }

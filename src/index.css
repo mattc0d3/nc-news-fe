@@ -25,13 +25,21 @@
 #navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px 15%;
   font-size: 1.2rem;
+  margin: 10px;
 }
 
 #navbar-container {
   border: 2px solid blue;
-  height: 10%;
+  height: 8%;
+}
+
+#recent-articles-header {
+  margin: 2% 5%;
+  text-align: left;
+  border-bottom: 2px solid black;
 }
 
 #searchbar {
@@ -47,7 +55,7 @@
 }
 
 #searchbar-container {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   height: 10%;
 }
 
@@ -57,9 +65,28 @@
   margin-top: 0;
 }
 
+#topic-filter-dropdown {
+  padding: 5px;
+}
+
 #welcome-header {
   margin-bottom: 0;
   margin-top: 10px;
+}
+
+.article-preview {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 2fr 1fr;
+  margin: 5%;
+  border: 2px solid black;
+}
+
+.article-preview * {
+  text-align: left;
+  margin: 0;
+  padding: 10px;
+  
 }
 
 .logo {
@@ -67,8 +94,41 @@
 }
 
 .page-content {
-  border: 2px solid red;
-  height: 70%;
+  /* border: 2px solid red; */
+  height: 65%;
+}
+
+.page-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5%;
+  border-top: 2px solid black;
+}
+
+.page-nav button {
+  height: 50%;
+  margin: 0 20px;
+  width: 30px;
+}
+
+.preview-img {
+  height: 100px;
+  grid-row: span 2;
+}
+
+.preview-title {
+  font-weight: bold;
+}
+
+.preview-author {
+  font-style: italic;
+}
+
+.results-list {
+  height: 90%;
+  overflow: auto;
+  margin-top: 0;
 }
 
 a {
@@ -76,6 +136,82 @@ a {
   color: black
 }
 
+button {
+  padding: 5px;
+}
+
 li {
   list-style: none;
+}
+
+ul {
+  padding-left: 0;
+}
+
+@media only screen and (min-width: 1300px) {
+  .article-preview {
+    font-size: 1.2rem;
+  }
+
+  .preview-img {
+    height: 150px;
+  }
+
+}
+
+@media only screen and (max-width: 700px) {
+  #welcome-header, #strapline {
+    font-size: 100%;
+  }
+  
+  .article-preview {
+    font-size: 0.7rem;
+  }
+
+  .preview-img {
+    height: 80px;
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+  #searchbar * {
+    font-size: 0.7rem;
+  }
+  
+  #strapline {
+    font-size: 85%;
+  }
+  
+  .article-preview {
+    font-size: 0.5rem;
+  }
+
+  .preview-img {
+    height: 50px;
+  }
+
+}
+
+@media only screen and (max-width: 350px) {
+  #navbar {
+    font-size: 0.8rem;
+  }
+  
+  #searchbar * {
+    font-size: 0.4rem;
+  }
+
+  #strapline {
+    font-size: 60%;
+  }
+  
+  .article-preview {
+    font-size: 0.3rem;
+  }
+
+  .preview-img {
+    height: 40px;
+  }
+
 }
