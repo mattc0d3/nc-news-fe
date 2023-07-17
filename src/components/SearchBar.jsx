@@ -1,8 +1,12 @@
 const SearchBar = () => {
     return <section id="searchbar-container">
         <form id="searchbar">
-            <label for="searchBar" class="sr-only">Search Term: </label>
-            <input id="searchBar" type="text"/>
+            <label htmlFor="topic-filter-dropdown">Filter By: </label>
+            <select name="topic" id="topic-filter-dropdown">
+                {topics.map(topic => {
+                    return <option value={topic.slug}>{topic.slug}</option>
+                })}
+            </select>
             <button>Search</button>
         </form>
     </section>
