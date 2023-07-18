@@ -17,9 +17,17 @@
   margin: auto;
 }
 
+#comments-list {
+  padding-bottom: 1px;
+}
+
 #header-container {
   border: 2px solid purple;
   height: 10%;
+}
+
+#home-page {
+  height: 65%;
 }
 
 #navbar {
@@ -82,7 +90,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 3fr;
-  height: 100%;
+  height: 60%;
   text-align: left;
   padding: 5%;
   margin: 5%;
@@ -113,6 +121,23 @@
   grid-column: span 2;
 }
 
+.comment-author {
+  font-style: italic;
+}
+
+.comment-card {
+  background-color: white;
+  margin: 5%;
+  padding: 0 5%;
+  border: 2px solid black;
+  text-align: left;
+}
+
+.comments-dropdown {
+  grid-column: span 2;
+  height: 10%;
+}
+
 .loading-screen {
   height: 70%;
   display: flex;
@@ -126,7 +151,8 @@
 
 .page-content {
   /* border: 2px solid red; */
-  height: 65%;
+  height: 80%;
+  overflow: auto;
 }
 
 .page-nav {
@@ -160,6 +186,12 @@
   height: 90%;
   overflow: auto;
   margin-top: 0;
+}
+
+.show-comments-button {
+  width: 40%;
+  font-size: 1rem;
+  padding: 10px;
 }
 
 a {

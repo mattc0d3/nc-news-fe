@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react'
 import { getArticleById } from '../utils/apis'
 import convertDate from '../utils/convertDate'
 import ClipLoader from "react-spinners/ClipLoader";
+import CommentsList from './CommentsList'
 
 const Article = () => {
     const [isLoading, setIsLoading] = useState(true)
+    const [commentsExpanded, setCommentsExpanded] = useState(false)
     const [currentArticle, setCurrentArticle] = useState({
         "title": "",
         "topic": "",
@@ -47,6 +49,10 @@ const Article = () => {
                 <img className="article-img" src={currentArticle.article_img_url} alt={currentArticle.title} />
                 <p>{convertDate(currentArticle.created_at)}</p>
                 <p className="article-body">{currentArticle.body}</p>
+            </div>
+            <div className="comments-dropdown">
+                <button className='show-comments-button' onClick={() => setCommentsExpanded(!commentsExpanded)}> show comments {commentsExpanded ? '-' : '+'}</button>
+                {commentsExpanded && < CommentsList article_id={params.article_id} />}
             </div>
         </section>
     }

@@ -37,7 +37,7 @@ const Home = ({ topics }) => {
             />
         </div>
     }
-    else return <section className="page-content">
+    else return <section id="home-page">
         <h3 id="recent-articles-header">Recent Articles:</h3>
         <ul className="results-list">
             {searchResults.map(result => {
