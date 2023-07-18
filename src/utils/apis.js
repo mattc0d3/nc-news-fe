@@ -15,7 +15,6 @@ export const getTopics = () => {
 }
 
 export const getCommentsByArticleId = (article_id) => {
-    console.log(article_id, "<<<<< article id in util")
     return api.get(`/articles/${article_id}/comments`)
         .then(res => res.data)
 }

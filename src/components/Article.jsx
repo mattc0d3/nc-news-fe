@@ -50,17 +50,9 @@ const Article = () => {
                 <p>{convertDate(currentArticle.created_at)}</p>
                 <p className="article-body">{currentArticle.body}</p>
             </div>
-            <div className="accordion">
-                <div className="accordion-item">
-                    <div
-                        className="accordion-title"
-                        onClick={() => setCommentsExpanded(!commentsExpanded)}
-                    >
-                        <div>Comments</div>
-                        <div>{commentsExpanded ? '-' : '+'}</div>
-                    </div>
-                    {commentsExpanded && <div className="accordion-content">< CommentsList article_id={params.article_id} /></div>}
-                </div>
+            <div className="comments-dropdown">
+                <button className='show-comments-button' onClick={() => setCommentsExpanded(!commentsExpanded)}> show comments {commentsExpanded ? '-' : '+'}</button>
+                {commentsExpanded && < CommentsList article_id={params.article_id} />}
             </div>
         </section>
     }

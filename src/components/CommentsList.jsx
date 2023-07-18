@@ -9,13 +9,11 @@ const CommentsList = ({article_id}) => {
     useEffect(() => {
         getCommentsByArticleId(article_id)
             .then(res => {
-                console.log(res, "<<<< comments")
                 setComments(res.comments)
-                console.log(comments)
             })
     }, [])
 
-    return <ul>
+    return <ul id="comments-list">
         {comments.map(comment => {
             return < CommentCard key={comment.comment_id} comment={comment} />
         })}

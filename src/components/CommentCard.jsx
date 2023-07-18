@@ -1,7 +1,7 @@
 const CommentCard = ({ comment }) => {
-    return <li>
+    return <li className="comment-card">
         <p>{comment.body}</p>
-        <p>{comment.author}</p>
+        <p className="comment-author">{comment.author}</p>
     </li>
 }
 
