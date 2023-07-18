@@ -4,7 +4,7 @@ import './App.css'
 import NavBar from './components/NavBar'
 import Header from './components/Header'
 import Home from './components/Home'
-import getTopics from './utils/getTopics'
+import {getTopics} from './utils/apis'
 
 function App() {
   const [topics, setTopics] = useState([])
