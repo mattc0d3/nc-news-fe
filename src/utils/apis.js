@@ -6,6 +6,10 @@ export const getArticles = (resultsPage) => {
     return api.get(`/articles?p=${resultsPage}&total_count=true`).then(res => res.data)
 }
 
+export const getArticleById = (article_id) => {
+    return api.get(`/articles/${article_id}`).then(res => res.data.article)
+}
+
 export const getTopics = () => {
     return api.get('/topics').then(res => res.data.topics)
 }

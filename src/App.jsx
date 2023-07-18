@@ -4,6 +4,7 @@ import './App.css'
 import NavBar from './components/NavBar'
 import Header from './components/Header'
 import Home from './components/Home'
+import Article from './components/Article'
 import {getTopics} from './utils/apis'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       < Header />
       < Routes >
         < Route path="/" element={< Home topics={topics}/>} />
+        < Route path="/articles/:article_id" element={<Article />} />
       </Routes>
     </main>
   )
