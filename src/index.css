@@ -93,7 +93,9 @@
   height: 60%;
   text-align: left;
   padding: 5%;
+  padding-top: 0;
   margin: 5%;
+  margin-top: 0;
 }
 
 .article-img {
@@ -136,6 +138,10 @@
 .comments-dropdown {
   grid-column: span 2;
   height: 10%;
+}
+
+.downvoted {
+  background-color: rgba(255, 0, 0, 0.537);
 }
 
 .loading-screen {
@@ -192,6 +198,29 @@
   width: 40%;
   font-size: 1rem;
   padding: 10px;
+}
+
+.upvoted {
+  background-color: rgba(0, 128, 0, 0.545);
+}
+
+.vote-bar {
+  padding: 5% 5% 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.vote-bar button {
+  margin: 0 20px;
+  width: 30px;
+}
+
+.vote-error {
+  color: red;
+  text-align: right;
+  margin: 0 6.5%;
+  font-size: 90%;
 }
 
 a {
