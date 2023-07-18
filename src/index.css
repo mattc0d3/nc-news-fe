@@ -89,6 +89,13 @@
   
 }
 
+.loading-screen {
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .logo {
   color: red;
 }

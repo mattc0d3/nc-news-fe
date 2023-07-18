@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, CSSProperties } from 'react'
 import SearchBar from './SearchBar'
 import { getArticles } from '../utils/apis'
 import ArticlePreview from './ArticlePreview'
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Home = ({ topics }) => {
     const [searchResults, setSearchResults] = useState([])
@@ -25,7 +26,17 @@ const Home = ({ topics }) => {
         if (resultsPage > 1) setResultsPage(resultsPage - 1)
     }
 
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) {
+        return <div className='loading-screen'>
+            <ClipLoader
+                color={"red"}
+                loading={isLoading}
+                size={60}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
+        </div>
+    }
     else return <section className="page-content">
         <h3 id="recent-articles-header">Recent Articles:</h3>
         <ul className="results-list">
