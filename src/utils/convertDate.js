@@ -1,6 +1,5 @@
 const convertDate = (ISODate) => {
 
-    console.log(ISODate, "<<<< param")
     const months = {
         "01": "January",
         "02": "February",
