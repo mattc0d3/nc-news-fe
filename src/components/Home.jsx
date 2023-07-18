@@ -1,4 +1,4 @@
-import { useState, useEffect, CSSProperties } from 'react'
+import { useState, useEffect } from 'react'
 import SearchBar from './SearchBar'
 import { getArticles } from '../utils/apis'
 import ArticlePreview from './ArticlePreview'
