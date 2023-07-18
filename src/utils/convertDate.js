@@ -21,14 +21,9 @@ const convertDate = (ISODate) => {
     const day = splitDate[2].slice(0, 2)
     
     let suffix
-    switch (day) {
-        case day[1] === "1":
-            suffix= "st"
-        case day[1] === "2":
-            suffix = "nd"
-        default:
-            suffix = "th"
-    }
+    if (day[1] === "1") suffix = "st"
+    else if (day[1] === "2") suffix = "nd"
+    else suffix = "th"
 
     let formattedDay
     if (day[0] === "0") formattedDay = day[1] + suffix
