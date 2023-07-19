@@ -30,7 +30,7 @@
 #new-comment-window {
   background-color: white;
   position: fixed;
-  height: 50%;
+  height: 40%;
   width: 50%;
   box-shadow: 0 0 10px 10px #ddd;
 }
@@ -63,6 +63,28 @@
 #navbar-container {
   border: 2px solid blue;
   height: 8%;
+}
+
+#new-comment {
+  height: 30%;
+  font-size: 1rem;
+  padding: 30px;
+}
+
+#new-comment-form {
+  height: 100%;
+}
+
+#post-comment-button {
+  width: 50%;
+  margin: 8% auto 2%;
+  font-size: 1rem;
+  padding: 3%
+}
+
+#post-comment-success-message {
+  margin: 50px auto;
+  font-size: 1.2rem;
 }
 
 #recent-articles-header {
@@ -170,6 +192,11 @@
   width: 30px;
   position: absolute;
   right: 0;
+}
+
+.error-message {
+  color: red;
+  margin: 0 auto;
 }
 
 .loading-screen {

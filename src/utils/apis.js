@@ -18,3 +18,14 @@ export const getCommentsByArticleId = (article_id) => {
     return api.get(`/articles/${article_id}/comments`)
         .then(res => res.data)
 }
+
+export const postComment = (body, article_id, username) => {
+    console.log(body, article_id, username, "<<<< post comment params")
+    return api.post(`//articles/${article_id}/comments`, {
+        body: body,
+        username: username
+      }).then(res => {
+        console.log(res)
+        return res.data
+      })
+}
