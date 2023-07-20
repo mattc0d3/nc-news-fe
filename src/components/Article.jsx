@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { getArticleById } from '../utils/apis'
+import { getArticleById, patchArticleById } from '../utils/apis'
 import convertDate from '../utils/convertDate'
 import ClipLoader from "react-spinners/ClipLoader";
 import CommentsList from './CommentsList'
@@ -11,6 +11,8 @@ const Article = () => {
     const [comments, setComments] = useState([])
     const [commentsExpanded, setCommentsExpanded] = useState(false)
     const [commentWindowOpen, setCommentWindowOpen] = useState(false)
+    const [userVotes, setUserVotes] = useState(0)
+    const [isVoteError, setIsVoteError] = useState(false)
     const [currentArticle, setCurrentArticle] = useState({
         "title": "",
         "topic": "",
@@ -23,7 +25,6 @@ const Article = () => {
     })
     const params = useParams()
 
-
     useEffect(() => {
         getArticleById(params.article_id)
             .then(article => {
@@ -31,6 +32,19 @@ const Article = () => {
                 setIsLoading(false)
             })
     }, [params.article_id])
+
+    const vote = (increment) => {
+        setUserVotes(currentUserVotes => {
+            return currentUserVotes + increment
+        })
+        patchArticleById(params.article_id, increment)
+            .catch(err => {
+                setUserVotes(currentUserVotes => {
+                    return currentUserVotes + increment
+                })
+                setIsVoteError(true)
+            })
+    }
 
     if (isLoading) {
         return <section className="page-content">
@@ -46,11 +60,17 @@ const Article = () => {
     }
     else {
         return <section className="page-content">
+            <div className="vote-bar">
+                <button aria-label="downvote article" onClick={() => vote(-1)} disabled={userVotes < 0} className={userVotes < 0 ? "downvoted" : ""} >-</button>
+                <p>{currentArticle.votes + userVotes}</p>
+                <button aria-label="upvote article" onClick={() => vote(1)} disabled={userVotes > 0} className={userVotes > 0 ? "upvoted" : ""} >+</button>
+            </div>
+            {isVoteError ? <p className="vote-error">Something went wrong!</p> : null}
             <div className="article-container">
                 <h3 className="article-title">{currentArticle.title}</h3>
-                <p>{currentArticle.author}</p>
+                <p className="article-author">{currentArticle.author}</p>
                 <img className="article-img" src={currentArticle.article_img_url} alt={currentArticle.title} />
-                <p>{convertDate(currentArticle.created_at)}</p>
+                <p className="article-date">{convertDate(currentArticle.created_at)}</p>
                 <p className="article-body">{currentArticle.body}</p>
             <button className='add-comment-button' onClick={() => setCommentWindowOpen(true)} disabled={commentWindowOpen}>Add comment</button>
             {commentWindowOpen ? < NewComment setCommentWindowOpen={setCommentWindowOpen} setComments={setComments} article_id={params.article_id} setCommentsExpanded={setCommentsExpanded}/> : null}
