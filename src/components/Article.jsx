@@ -65,9 +65,9 @@ const Article = () => {
             {isVoteError ? <p className="vote-error">Something went wrong!</p> : null}
             <div className="article-container">
                 <h3 className="article-title">{currentArticle.title}</h3>
-                <p>{currentArticle.author}</p>
+                <p className="article-author">{currentArticle.author}</p>
                 <img className="article-img" src={currentArticle.article_img_url} alt={currentArticle.title} />
-                <p>{convertDate(currentArticle.created_at)}</p>
+                <p className="article-date">{convertDate(currentArticle.created_at)}</p>
                 <p className="article-body">{currentArticle.body}</p>
             </div>
             <div className="comments-dropdown">
