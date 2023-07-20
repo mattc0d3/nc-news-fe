@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const api = axios.create({ baseURL: 'https://nc-news-api-45fk.onrender.com/api'})
+const api = axios.create({ baseURL: 'https://nc-news-api-45fk.onrender.com/api' })
 
 export const getArticles = (resultsPage, topic = null) => {
     const params = {
@@ -24,6 +24,15 @@ export const getCommentsByArticleId = (article_id) => {
         .then(res => res.data)
 }
 
+export const postComment = (body, article_id, username) => {
+    return api.post(`/articles/${article_id}/comments`, {
+        body: body,
+        username: username
+    }).then(res => {
+        return res.data.comment
+    })
+}
+
 export const patchArticleById = (article_id, inc_votes) => {
-    return api.patch(`/articles/${article_id}`, {inc_votes})
+    return api.patch(`/articles/${article_id}`, { inc_votes })
 }

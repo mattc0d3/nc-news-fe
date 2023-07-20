@@ -4,10 +4,13 @@ import { getArticleById, patchArticleById } from '../utils/apis'
 import convertDate from '../utils/convertDate'
 import ClipLoader from "react-spinners/ClipLoader";
 import CommentsList from './CommentsList'
+import NewComment from './NewComment';
 
 const Article = () => {
     const [isLoading, setIsLoading] = useState(true)
+    const [comments, setComments] = useState([])
     const [commentsExpanded, setCommentsExpanded] = useState(false)
+    const [commentWindowOpen, setCommentWindowOpen] = useState(false)
     const [userVotes, setUserVotes] = useState(0)
     const [isVoteError, setIsVoteError] = useState(false)
     const [currentArticle, setCurrentArticle] = useState({
@@ -69,10 +72,12 @@ const Article = () => {
                 <img className="article-img" src={currentArticle.article_img_url} alt={currentArticle.title} />
                 <p className="article-date">{convertDate(currentArticle.created_at)}</p>
                 <p className="article-body">{currentArticle.body}</p>
+            <button className='add-comment-button' onClick={() => setCommentWindowOpen(true)} disabled={commentWindowOpen}>Add comment</button>
+            {commentWindowOpen ? < NewComment setCommentWindowOpen={setCommentWindowOpen} setComments={setComments} article_id={params.article_id} setCommentsExpanded={setCommentsExpanded}/> : null}
             </div>
             <div className="comments-dropdown">
                 <button className='show-comments-button' onClick={() => setCommentsExpanded(!commentsExpanded)}> show comments {commentsExpanded ? '-' : '+'}</button>
-                {commentsExpanded && < CommentsList article_id={params.article_id} />}
+                {commentsExpanded && < CommentsList article_id={params.article_id} comments={comments} setComments={setComments}/>}
             </div>
         </section>
     }
