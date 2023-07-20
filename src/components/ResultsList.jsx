@@ -4,19 +4,27 @@ import { getArticles } from '../utils/apis'
 import ArticlePreview from './ArticlePreview'
 import ClipLoader from "react-spinners/ClipLoader";
 
-const ResultsList = ({ allTopics, topic = null }) => {
+const ResultsList = ({ allTopics, topic = null, order, sortBy }) => {
     const [searchResults, setSearchResults] = useState([])
     const [resultsPage, setResultsPage] = useState(1)
     const [totalPages, setTotalPages] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        getArticles(resultsPage, topic).then(data => {
+        getArticles(resultsPage, topic, order, sortBy).then(data => {
             setSearchResults(data.articles)
             setTotalPages(Math.floor(data.totalArticles / 10))
             setIsLoading(false)
         })
-    }, [resultsPage, topic])
+    }, [resultsPage, topic, order, sortBy])
+
+    // useEffect(() => {
+    //     setSearchResults(currentResults => {
+    //         console.log(currentResults)
+    //         return currentResults.sort((a, b) => (a[sortBy] > b[sortBy]) ? 1 : (a[sortBy] < b[sortBy]) ? -1 : 0)
+    //     })
+    // }, [sortBy])
+
 
     const incrementPage = () => {
         if (resultsPage < totalPages) setResultsPage(resultsPage + 1)

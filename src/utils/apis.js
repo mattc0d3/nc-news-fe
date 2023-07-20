@@ -2,10 +2,13 @@ import axios from 'axios'
 
 const api = axios.create({ baseURL: 'https://nc-news-api-45fk.onrender.com/api' })
 
-export const getArticles = (resultsPage, topic = null) => {
+export const getArticles = (resultsPage, topic = null, order, sortBy) => {
+    console.log()
     const params = {
         p: resultsPage,
         total_count: true,
+        sort_by: sortBy,
+        order: order
     }
     if (topic) params.topic = topic
     return api.get(`/articles`, {params}).then(res => res.data)
