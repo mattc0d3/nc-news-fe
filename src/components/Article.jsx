@@ -30,27 +30,14 @@ const Article = () => {
             })
     }, [params.article_id])
 
-    const downvote = () => {
+    const vote = (increment) => {
         setUserVotes(currentUserVotes => {
-            return currentUserVotes - 1
+            return currentUserVotes + increment
         })
-        patchArticleById(params.article_id, -1)
+        patchArticleById(params.article_id, increment)
             .catch(err => {
                 setUserVotes(currentUserVotes => {
-                    return currentUserVotes + 1
-                })
-                setIsVoteError(true)
-            })
-    }
-
-    const upvote = () => {
-        setUserVotes(currentUserVotes => {
-            return currentUserVotes + 1
-        })
-        patchArticleById(params.article_id, 1)
-            .catch(err => {
-                setUserVotes(currentUserVotes => {
-                    return currentUserVotes - 1
+                    return currentUserVotes + increment
                 })
                 setIsVoteError(true)
             })
@@ -71,11 +58,11 @@ const Article = () => {
     else {
         return <section className="page-content">
             <div className="vote-bar">
-                <button aria-label="downvote article" onClick={downvote} disabled={userVotes < 0} className={userVotes < 0 ? "downvoted" : ""} >-</button>
+                <button aria-label="downvote article" onClick={() => vote(-1)} disabled={userVotes < 0} className={userVotes < 0 ? "downvoted" : ""} >-</button>
                 <p>{currentArticle.votes + userVotes}</p>
-                <button aria-label="upvote article" onClick={upvote} disabled={userVotes > 0} className={userVotes > 0 ? "upvoted" : ""} >+</button>
-                </div>
-                {isVoteError ? <p className="vote-error">Something went wrong!</p> : null}
+                <button aria-label="upvote article" onClick={() => vote(1)} disabled={userVotes > 0} className={userVotes > 0 ? "upvoted" : ""} >+</button>
+            </div>
+            {isVoteError ? <p className="vote-error">Something went wrong!</p> : null}
             <div className="article-container">
                 <h3 className="article-title">{currentArticle.title}</h3>
                 <p>{currentArticle.author}</p>
