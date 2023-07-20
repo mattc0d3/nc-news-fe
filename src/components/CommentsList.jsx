@@ -2,9 +2,7 @@ import { useState, useEffect } from "react"
 import { getCommentsByArticleId } from "../utils/apis"
 import CommentCard from "./CommentCard"
 
-const CommentsList = ({article_id}) => {
-
-    const [comments, setComments] = useState([])
+const CommentsList = ({article_id, comments, setComments}) => {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
@@ -16,7 +14,7 @@ const CommentsList = ({article_id}) => {
     }, [])
 
     if (isLoading) return <p>Loading comments...</p>
-    else return <ul id="comments-list">
+    else return <ul id="comments-list" >
         {comments.map(comment => {
             return < CommentCard key={comment.comment_id} comment={comment} />
         })}
