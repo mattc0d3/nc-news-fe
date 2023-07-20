@@ -23,7 +23,7 @@
 
 #header-container {
   border: 2px solid purple;
-  height: 10%;
+  height: 12%;
 }
 
 #home-page {
@@ -93,13 +93,17 @@
   height: 60%;
   text-align: left;
   padding: 5%;
+  padding-top: 0;
   margin: 5%;
+  margin-top: 0;
+  overflow: auto;
 }
 
 .article-img {
   grid-row: span 2;
   height: 100%;
   margin: auto;
+  margin-right: 0;
 }
 
 .article-preview {
@@ -131,11 +135,16 @@
   padding: 0 5%;
   border: 2px solid black;
   text-align: left;
+  font-size: 0.9rem;
 }
 
 .comments-dropdown {
   grid-column: span 2;
   height: 10%;
+}
+
+.downvoted {
+  background-color: rgba(255, 0, 0, 0.537);
 }
 
 .loading-screen {
@@ -194,6 +203,29 @@
   padding: 10px;
 }
 
+.upvoted {
+  background-color: rgba(0, 128, 0, 0.545);
+}
+
+.vote-bar {
+  padding: 0 5% 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.vote-bar button {
+  margin: 0 20px;
+  width: 30px;
+}
+
+.vote-error {
+  color: red;
+  text-align: right;
+  margin: 0 6.5%;
+  font-size: 90%;
+}
+
 a {
   text-decoration: none;
   color: black
@@ -226,13 +258,36 @@ ul {
   #welcome-header, #strapline {
     font-size: 100%;
   }
+
+  .article-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .article-img {
+    grid-row-start: 2;
+    grid-column-start: span 2;
+    width: 100%
+  }
   
   .article-preview {
     font-size: 0.7rem;
   }
 
+  .comment-card {
+    font-size: 0.8rem;
+  }
+
   .preview-img {
     height: 80px;
+  }
+
+  .show-comments-button {
+    font-size: 0.8rem;
+  }
+
+  .vote-bar {
+    justify-content: center;
   }
 
 }
@@ -245,13 +300,30 @@ ul {
   #strapline {
     font-size: 85%;
   }
+
+  .article-author, .article-date {
+    font-size: 0.6rem;
+  }
   
   .article-preview {
     font-size: 0.5rem;
   }
 
+  .comment-card {
+    font-size: 0.7rem;
+  }
+
+  .page-content {
+    font-size: 0.8rem;
+  }
+
   .preview-img {
     height: 50px;
+  }
+
+  .show-comments-button {
+    width: 60%;
+    font-size: 0.6rem;
   }
 
 }
@@ -268,13 +340,29 @@ ul {
   #strapline {
     font-size: 60%;
   }
+
+  .article-author, .article-date {
+    font-size: 0.4rem;
+  }
   
   .article-preview {
     font-size: 0.3rem;
   }
 
+  .article-container {
+    font-size: 0.6rem;
+  }
+
+  .comment-card {
+    font-size: 0.5rem;
+  }
+
   .preview-img {
     height: 40px;
+  }
+
+  .show-comments-button {
+    font-size: 0.4rem;
   }
 
 }
