@@ -5,14 +5,15 @@ import NavBar from './components/NavBar'
 import Header from './components/Header'
 import Home from './components/Home'
 import Article from './components/Article'
+import Topic from './components/Topic'
 import {getTopics} from './utils/apis'
 
 function App() {
-  const [topics, setTopics] = useState([])
+  const [allTopics, setAllTopics] = useState([])
 
   useEffect(() => {
     getTopics().then(data => {
-      setTopics(data)
+      setAllTopics(data)
     })
   }, [])
 
@@ -21,8 +22,9 @@ function App() {
       < NavBar />
       < Header />
       < Routes >
-        < Route path="/" element={< Home topics={topics}/>} />
+        < Route path="/" element={< Home allTopics={allTopics}/>} />
         < Route path="/articles/:article_id" element={<Article />} />
+        < Route path="/:topic" element={<Topic allTopics={allTopics}/>} />
       </Routes>
     </main>
   )
