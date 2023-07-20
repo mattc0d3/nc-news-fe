@@ -38,7 +38,7 @@ const NewComment = ({ setCommentWindowOpen, setComments, article_id, setComments
         <form id="new-comment-form" onSubmit={handleSubmit}>
             <label htmlFor="new-comment">Add new comment: </label>
             <textarea name="new-comment" id="new-comment" value={newComment} onChange={(e) => setNewComment(e.target.value)} ></textarea>
-            {postSuccess ? <p id="post-comment-success-message">Post Successful!</p> : <button id="post-comment-button" disabled={!newComment.length}>{isLoading ? <ClipLoader
+            {postSuccess ? <p id="post-comment-success-message">Post Successful!</p> : <button id="post-comment-button" disabled={!newComment.length || isLoading}>{isLoading ? <ClipLoader
                 color={"red"}
                 loading={isLoading}
                 size={20}
