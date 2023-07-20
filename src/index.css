@@ -40,10 +40,6 @@
   height: 12%;
 }
 
-#home-page {
-  height: 65%;
-}
-
 #login-display {
   text-align: left;
   position: absolute;
@@ -91,6 +87,10 @@
   margin: 2% 5%;
   text-align: left;
   border-bottom: 2px solid black;
+}
+
+#results {
+  height: 60vh;
 }
 
 #searchbar {
@@ -172,6 +172,13 @@
   grid-column: span 2;
 }
 
+.articles-header {
+  text-transform: capitalize;
+  margin: 2% 5%;
+  text-align: left;
+  border-bottom: 2px solid black;
+}
+
 .comment-author {
   font-style: italic;
 }
@@ -221,7 +228,7 @@
 
 .page-content {
   /* border: 2px solid red; */
-  height: 80%;
+  height: 60vh;
   overflow: auto;
 }
 
@@ -253,7 +260,7 @@
 }
 
 .results-list {
-  height: 90%;
+  height: 80%;
   overflow: auto;
   margin-top: 0;
 }
@@ -313,6 +320,22 @@ ul {
     height: 150px;
   }
 
+}
+
+@media only screen and (max-width: 1000px) {
+  #searchbar * {
+    margin: 0 5px;
+    font-size: 0.9rem;
+  }
+
+  .page-nav {
+    font-size: 0.7rem;
+  }
+
+  .page-nav button {
+    width: 30px;
+    font-size: 0.7rem;
+  }
 }
 
 @media only screen and (max-width: 700px) {
@@ -378,6 +401,16 @@ ul {
     font-size: 0.8rem;
   }
 
+  .page-nav {
+    font-size: 0.5rem;
+  }
+
+  .page-nav button {
+    margin: 0 10px;
+    width: 20px;
+    font-size: 0.5rem;
+  }
+
   .preview-img {
     height: 50px;
   }
@@ -393,8 +426,13 @@ ul {
   #navbar {
     font-size: 0.8rem;
   }
+
+  #searchbar {
+    flex-wrap: wrap;
+  }
   
   #searchbar * {
+    margin-top: 5px;
     font-size: 0.4rem;
   }
 
@@ -416,6 +454,16 @@ ul {
 
   .comment-card {
     font-size: 0.5rem;
+  }
+
+  .page-nav {
+    font-size: 0.4rem;
+  }
+
+  .page-nav button {
+    margin: 0 5px;
+    width: 20px;
+    font-size: 0.4rem;
   }
 
   .preview-img {
