@@ -4,13 +4,15 @@ import { UserContext } from "../contexts/User"
 import { useContext, useState } from "react"
 import { deleteComment } from "../utils/apis"
 
-const CommentCard = ({ comment, setComments }) => {
+const CommentCard = ({ comment, setComments, setDeletingComment }) => {
     const { user, setUser } = useContext(UserContext)
     const [isError, setIsError] = useState(false)
 
     const confirmDelete = (e) => {
         if (confirm("Delete comment?")) {
+            setDeletingComment(true)
             deleteComment(comment.comment_id).then(() => {
+                setDeletingComment(false)
                 setComments(currentComments => {
                     return currentComments.filter(currentComment => currentComment.comment_id !== comment.comment_id)
                 })
@@ -20,6 +22,7 @@ const CommentCard = ({ comment, setComments }) => {
                     setComments(currentComments => {
                         return [comment, ...currentComments]
                     })
+                    setDeletingComment(false)
                 })
         }
     }
