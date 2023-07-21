@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react"
+import { useState, useContext } from "react"
 import { UserContext } from "../contexts/User"
 import { postComment } from "../utils/apis"
 import ClipLoader from "react-spinners/ClipLoader";
@@ -27,10 +27,10 @@ const NewComment = ({ setCommentWindowOpen, setComments, article_id, setComments
                 setCommentsExpanded(true)
             }, 1000)
         })
-        .catch(err => {
-            setIsError(true)
-            setIsLoading(false)
-        })
+            .catch(err => {
+                setIsError(true)
+                setIsLoading(false)
+            })
     }
 
     return <div id="new-comment-window">
@@ -45,7 +45,7 @@ const NewComment = ({ setCommentWindowOpen, setComments, article_id, setComments
                 aria-label="Loading Spinner"
                 data-testid="loader"
             /> : "Post Comment"}</button>}
-            {isError ? <p className="error-message">Something went wrong, please try again!</p> : null}
+            {isError && <p className="error-message">Something went wrong, please try again!</p>}
         </form>
     </div>
 }

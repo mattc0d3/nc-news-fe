@@ -7,7 +7,7 @@ const Home = ({ allTopics }) => {
 
     return <section id="">
         <div className="articles-header">
-        <h3>{params.topic ? params.topic : "Recent"} Articles:</h3>
+            <h3>{params.topic ? params.topic : "Recent"} Articles:</h3>
         </div>
         < ResultsList allTopics={allTopics} topic={params.topic} />
     </section>
