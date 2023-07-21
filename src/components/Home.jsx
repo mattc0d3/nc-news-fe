@@ -13,7 +13,7 @@ const Home = ({ allTopics }) => {
             <h3 className="articles-header">{params.topic ? params.topic : "Recent"} Articles:</h3>
             < SortOptions order={order} setOrder={setOrder} sortBy={sortBy} setSortBy={setSortBy} topic={params.topic} />
         </div>
-        < ResultsList allTopics={allTopics} topic={params.topic} order={order} sortBy={sortBy}/>
+        < ResultsList allTopics={allTopics} topic={params.topic} order={order} sortBy={sortBy} />
     </section>
 }
 

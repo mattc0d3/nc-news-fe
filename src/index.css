@@ -21,6 +21,18 @@
   padding-bottom: 1px;
 }
 
+#error-container {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#error-img {
+  height: 80px;
+}
+
 #new-comment-form {
   display: flex;
   flex-direction: column;

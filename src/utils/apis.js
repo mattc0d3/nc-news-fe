@@ -10,7 +10,8 @@ export const getArticles = (resultsPage, topic = null, order, sortBy) => {
         order: order
     }
     if (topic) params.topic = topic
-    return api.get(`/articles`, { params }).then(res => res.data)
+    return api.get(`/articles`, { params })
+    .then(res => res.data)
 }
 
 export const getArticleById = (article_id) => {

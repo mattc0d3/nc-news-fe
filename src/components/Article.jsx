@@ -5,6 +5,7 @@ import convertDate from '../utils/convertDate'
 import ClipLoader from "react-spinners/ClipLoader";
 import CommentsList from './CommentsList'
 import NewComment from './NewComment';
+import ErrorPage from './ErrorPage';
 
 const Article = () => {
     const [isLoading, setIsLoading] = useState(true)
@@ -12,6 +13,7 @@ const Article = () => {
     const [commentsExpanded, setCommentsExpanded] = useState(false)
     const [commentWindowOpen, setCommentWindowOpen] = useState(false)
     const [userVotes, setUserVotes] = useState(0)
+    const [error, setError] = useState(null)
     const [isVoteError, setIsVoteError] = useState(false)
     const [currentArticle, setCurrentArticle] = useState({
         "title": "",
@@ -29,6 +31,10 @@ const Article = () => {
         getArticleById(params.article_id)
             .then(article => {
                 setCurrentArticle(article)
+                setIsLoading(false)
+            })
+            .catch(err => {
+                setError(err.response)
                 setIsLoading(false)
             })
     }, [params.article_id])
@@ -58,6 +64,7 @@ const Article = () => {
             />
         </section>
     }
+    else if (error) return < ErrorPage status={error.status} message={error.data.msg}/>
     else {
         return <section className="page-content">
             <div className="vote-bar">
