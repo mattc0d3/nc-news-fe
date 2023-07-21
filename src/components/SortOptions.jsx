@@ -9,6 +9,12 @@ const SortOptions = ({ order, setOrder, sortBy, setSortBy, topic }) => {
         setSearchParams({ sort_by: sortBy, order: order})
     }, [sortBy, order, topic])
 
+    useEffect(() => {
+        setOrder(searchParams.get("order"))
+        setSortBy(searchParams.get("sort_by"))
+
+    }, [])
+
     const reverseOrder = () => {
         if (order === "desc") setOrder("asc")
         else setOrder("desc")
@@ -16,7 +22,7 @@ const SortOptions = ({ order, setOrder, sortBy, setSortBy, topic }) => {
 
     return <form id="sort-options">
         <label htmlFor="sort-options">Sort by:</label>
-        <select id="sort-select" onChange={e => setSortBy(e.target.value)}>
+        <select id="sort-select" onChange={e => setSortBy(e.target.value)} >
             <option value="created_at" >date</option>
             <option value="comment_count" >comments</option>
             <option value="votes" >votes</option>

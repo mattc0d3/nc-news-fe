@@ -18,14 +18,6 @@ const ResultsList = ({ allTopics, topic = null, order, sortBy }) => {
         })
     }, [resultsPage, topic, order, sortBy])
 
-    // useEffect(() => {
-    //     setSearchResults(currentResults => {
-    //         console.log(currentResults)
-    //         return currentResults.sort((a, b) => (a[sortBy] > b[sortBy]) ? 1 : (a[sortBy] < b[sortBy]) ? -1 : 0)
-    //     })
-    // }, [sortBy])
-
-
     const incrementPage = () => {
         if (resultsPage < totalPages) setResultsPage(resultsPage + 1)
     }
