@@ -9,7 +9,7 @@ const ResultsList = ({ allTopics, topic = null, order, sortBy }) => {
     const [resultsPage, setResultsPage] = useState(1)
     const [totalPages, setTotalPages] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
-
+    
     useEffect(() => {
         getArticles(resultsPage, topic, order, sortBy).then(data => {
             setSearchResults(data.articles)
