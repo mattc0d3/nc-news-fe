@@ -217,6 +217,12 @@
   font-size: 0.9rem;
 }
 
+.comment-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
 .comments-dropdown {
   grid-column: span 2;
   height: 10%;
@@ -229,6 +235,17 @@
   width: 30px;
   position: absolute;
   right: 0;
+}
+
+.delete-comment-button {
+  height: 50%;
+  margin: 5px;
+  padding: 3px 20px;
+}
+
+.delete-comment-button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 0, 0, 0.401);
 }
 
 .downvoted {

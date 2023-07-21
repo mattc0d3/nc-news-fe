@@ -10,7 +10,7 @@ export const getArticles = (resultsPage, topic = null, order, sortBy) => {
         order: order
     }
     if (topic) params.topic = topic
-    return api.get(`/articles`, {params}).then(res => res.data)
+    return api.get(`/articles`, { params }).then(res => res.data)
 }
 
 export const getArticleById = (article_id) => {
@@ -37,4 +37,8 @@ export const postComment = (body, article_id, username) => {
 
 export const patchArticleById = (article_id, inc_votes) => {
     return api.patch(`/articles/${article_id}`, { inc_votes })
+}
+
+export const deleteComment = (comment_id) => {
+    return api.delete(`/comments/${comment_id}`)
 }
