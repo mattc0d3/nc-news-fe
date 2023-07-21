@@ -11,8 +11,10 @@ const ResultsList = ({ allTopics, topic = null, order, sortBy }) => {
     const [totalPages, setTotalPages] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
-    
+    console.log(error, "<<<<< error")
+
     useEffect(() => {
+        setError(null)
         getArticles(resultsPage, topic, order, sortBy).then(data => {
             setSearchResults(data.articles)
             setTotalPages(Math.floor(data.totalArticles / 10))
