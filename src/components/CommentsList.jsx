@@ -17,7 +17,7 @@ const CommentsList = ({ article_id, comments, setComments }) => {
     if (isLoading) return <p>Loading comments...</p>
     else return <ul id="comments-list" >
         {comments.map(comment => {
-            return < CommentCard key={comment.comment_id} comment={comment} setComments={setComments} setDeletingComment={setDeletingComment} />
+            return < CommentCard key={comment.comment_id} comment={comment} setComments={setComments} deletingComment={deletingComment} setDeletingComment={setDeletingComment} />
         })}
     </ul>
 }
