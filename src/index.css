@@ -71,6 +71,10 @@
   height: 100%;
 }
 
+#order-arrow {
+  
+}
+
 #post-comment-button {
   width: 50%;
   margin: 8% auto 2%;
@@ -108,6 +112,21 @@
 #searchbar-container {
   /* border: 2px solid green; */
   height: 10%;
+}
+
+#sort-options {
+  margin: auto 0;
+  display: flex;
+}
+
+#sort-options * {
+  margin: 0 5px;
+  font-size: 1.1rem;
+}
+
+#sort-select {
+  padding: 2px 5px;
+  margin-right: 15px;
 }
 
 #strapline {
@@ -165,7 +184,7 @@
   text-align: left;
   margin: 0;
   padding: 10px;
-  
+
 }
 
 .article-title {
@@ -174,9 +193,15 @@
 
 .articles-header {
   text-transform: capitalize;
-  margin: 2% 5%;
   text-align: left;
+  margin: 2% 0;
+}
+
+.articles-header-container {
+  margin: 2% 5%;
   border-bottom: 2px solid black;
+  display: flex;
+  justify-content: space-between;
 }
 
 .comment-author {
@@ -277,7 +302,7 @@
 }
 
 .results-list {
-  height: 80%;
+  height: 75%;
   overflow: auto;
   margin-top: 0;
 }
@@ -336,7 +361,12 @@ ul {
   .preview-img {
     height: 150px;
   }
+}
 
+@media only screen and (min-width: 1000px) {
+  .results-list {
+    height: 65%;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -353,10 +383,17 @@ ul {
     width: 30px;
     font-size: 0.7rem;
   }
+
 }
 
 @media only screen and (max-width: 700px) {
-  #welcome-header, #strapline {
+  #sort-options * {
+    font-size: 0.8rem;
+    margin: 0 2px;
+  }
+
+  #welcome-header,
+  #strapline {
     font-size: 100%;
   }
 
@@ -370,9 +407,13 @@ ul {
     grid-column-start: span 2;
     width: 100%
   }
-  
+
   .article-preview {
     font-size: 0.7rem;
+  }
+
+  .articles-header {
+    font-size: 0.8rem;
   }
 
   .comment-card {
@@ -381,6 +422,10 @@ ul {
 
   .preview-img {
     height: 80px;
+  }
+
+  .results-list {
+    height: 80%;
   }
 
   .show-comments-button {
@@ -397,17 +442,27 @@ ul {
   #searchbar * {
     font-size: 0.7rem;
   }
-  
+
+  #sort-options * {
+    font-size: 0.6rem;
+    margin: 0 2px;
+  }
+
   #strapline {
     font-size: 85%;
   }
 
-  .article-author, .article-date {
+  .article-author,
+  .article-date {
     font-size: 0.6rem;
   }
-  
+
   .article-preview {
     font-size: 0.5rem;
+  }
+
+  .articles-header {
+    font-size: 0.6rem;
   }
 
   .comment-card {
@@ -447,7 +502,7 @@ ul {
   #searchbar {
     flex-wrap: wrap;
   }
-  
+
   #searchbar * {
     margin-top: 5px;
     font-size: 0.4rem;
@@ -457,10 +512,11 @@ ul {
     font-size: 60%;
   }
 
-  .article-author, .article-date {
+  .article-author,
+  .article-date {
     font-size: 0.4rem;
   }
-  
+
   .article-preview {
     font-size: 0.3rem;
   }
@@ -485,6 +541,10 @@ ul {
 
   .preview-img {
     height: 40px;
+  }
+
+  .results-list {
+    height: 70%;
   }
 
   .show-comments-button {
@@ -513,10 +573,10 @@ ul {
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
+  top: 3px;
+  left: -15px;
   right: 0;
-  bottom: 0;
+  bottom: -6px;
   background-color: red;
   -webkit-transition: .4s;
   transition: .4s;
@@ -525,23 +585,23 @@ ul {
 .slider:before {
   position: absolute;
   content: "";
-  height: 16px;
-  width: 16px;
-  left: 4px;
+  height: 19px;
+  width: 20px;
+  left: 2px;
   bottom: 2px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: red;
 }
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(16px);
-  -ms-transform: translateX(16px);
-  transform: translateX(16px);
+input:checked+.slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
 }
 
 /* Rounded sliders */
@@ -551,4 +611,37 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+@media only screen and (max-width: 700px) {
+  .slider {
+    top: 3px;
+    left: -3px;
+    right: 0;
+    bottom: 0px;
+  }
+
+  .slider:before {
+    height: 14px;
+    width: 14px;
+    left: 2px;
+    bottom: 2px;
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+  .slider {
+    top: 0px;
+    left: 0px;
+    right: 0;
+    bottom: 3px;
+  }
+
+  .slider:before {
+    height: 14px;
+    width: 14px;
+    left: 2px;
+    bottom: 2px;
+  }
 }

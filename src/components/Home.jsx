@@ -4,10 +4,13 @@ import ResultsList from './ResultsList'
 
 const Home = ({ allTopics }) => {
     const params = useParams()
+    const [order, setOrder] = useState("desc")
+    const [sortBy, setSortBy] = useState("created_at")
 
     return <section id="">
-        <div className="articles-header">
-            <h3>{params.topic ? params.topic : "Recent"} Articles:</h3>
+        <div className="articles-header-container">
+            <h3 className="articles-header">{params.topic ? params.topic : "Recent"} Articles:</h3>
+            < SortOptions order={order} setOrder={setOrder} sortBy={sortBy} setSortBy={setSortBy} topic={params.topic} />
         </div>
         < ResultsList allTopics={allTopics} topic={params.topic} />
     </section>
