@@ -2,7 +2,7 @@
 
 Link to deployed app: https://nc-news-matt-sheehan.netlify.app/
 
-This project is an interactive news web application built with React and styled in the vein of voting and discussion based websites such as Reddit. 
+This project is an interactive news web application built with React and styled in the vein of voting and discussion based websites such as Reddit.
 
 Fetching data from a purpose-built API, NC News provides a feed of articles that can be filtered and sorted by various search terms. Users can login, post comments and provide upvotes and downvotes to existing articles and comments.
 
