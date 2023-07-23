@@ -12,8 +12,8 @@ Link to back-end database: https://nc-news-api-45fk.onrender.com/api
 - Download project from https://github.com/mattc0d3/nc-news-fe
 - Clone in terminal with following command: ‘git clone https://github.com/mattc0d3/nc-news-fe.git’
 - Open in code editor
-- Install dependencies using 'npm install'
-- To run the app locally, enter command: ‘npm run dev
+- Install dependencies using `npm install`
+- To run the app locally, enter command `npm run dev`
 
 # Database Environment Variables:
 - Script requires two databases - test and development - in order to be run. 
