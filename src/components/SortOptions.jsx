@@ -1,5 +1,7 @@
 import { useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
 
 const SortOptions = ({ order, setOrder, sortBy, setSortBy, topic }) => {
 
@@ -31,7 +33,8 @@ const SortOptions = ({ order, setOrder, sortBy, setSortBy, topic }) => {
             <input type="checkbox" onChange={reverseOrder}></input>
             <span className="slider round"></span>
         </label>
-        {order === "desc" ? <p id="order-arrow">↓</p> : <p id="order-arrow">↑</p>}
+        {order === "desc" ? <FontAwesomeIcon className="order-arrow" icon={faArrowDown} /> : <FontAwesomeIcon className="order-arrow" icon={faArrowUp} />}
+        {/* {order === "desc" ? <p id="order-arrow">↓</p> : <p id="order-arrow">↑</p>} */}
     </form>
 }
 
