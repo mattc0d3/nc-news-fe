@@ -52,12 +52,14 @@ const ResultsList = ({ allTopics, topic = null, order, sortBy }) => {
                 return < ArticlePreview key={result.article_id} article={result} />
             })}
         </ul>
-        <div className='page-nav'>
-            <button onClick={decrementPage}>-</button>
-            <p>page {resultsPage} of {totalPages}</p>
-            <button onClick={incrementPage}>+</button>
-        </div>
+        <div id="filter-container">
         < SearchBar allTopics={allTopics} />
+        <div className='page-nav'>
+            <button onClick={decrementPage} disabled={resultsPage===1} >-</button>
+            <p id="page-number"><span id="page-span">page</span> {resultsPage} of {totalPages}</p>
+            <button onClick={incrementPage} disabled={resultsPage===totalPages} >+</button>
+        </div>
+        </div>
     </section>
 }
 

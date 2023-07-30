@@ -23,7 +23,7 @@ const SortOptions = ({ order, setOrder, sortBy, setSortBy, topic }) => {
     }
 
     return <form id="sort-options">
-        <label htmlFor="sort-options">Sort by:</label>
+        <label id="sort-label" htmlFor="sort-options">Sort by:</label>
         <select id="sort-select" onChange={e => setSortBy(e.target.value)} >
             <option value="created_at" >date</option>
             <option value="comment_count" >comments</option>
@@ -34,7 +34,6 @@ const SortOptions = ({ order, setOrder, sortBy, setSortBy, topic }) => {
             <span className="slider round"></span>
         </label>
         {order === "desc" ? <FontAwesomeIcon className="order-arrow" icon={faArrowDown} /> : <FontAwesomeIcon className="order-arrow" icon={faArrowUp} />}
-        {/* {order === "desc" ? <p id="order-arrow">↓</p> : <p id="order-arrow">↑</p>} */}
     </form>
 }
 

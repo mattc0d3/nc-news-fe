@@ -20,7 +20,6 @@ function App() {
   return (
     <main id="app-container">
       < NavBar />
-      < Header />
       < Routes >
         < Route path="/" element={< Home allTopics={allTopics} />} />
         < Route path="/articles/:article_id" element={<Article />} />
