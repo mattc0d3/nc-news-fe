@@ -6,6 +6,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import CommentsList from './CommentsList'
 import NewComment from './NewComment';
 import ErrorPage from './ErrorPage';
+import LogInDisplay from './LogInDisplay';
 
 const Article = () => {
     const [isLoading, setIsLoading] = useState(true)
@@ -67,6 +68,7 @@ const Article = () => {
     else if (error) return < ErrorPage status={error.status} message={error.data.msg}/>
     else {
         return <section className="page-content">
+            < LogInDisplay />  
             <div className="vote-bar">
                 <button aria-label="downvote article" onClick={() => vote(-1)} disabled={userVotes < 0} className={userVotes < 0 ? "downvoted" : ""} >-</button>
                 <p>{currentArticle.votes + userVotes}</p>
@@ -81,10 +83,12 @@ const Article = () => {
                 <p className="article-body">{currentArticle.body}</p>
             <button className='add-comment-button' onClick={() => setCommentWindowOpen(true)} disabled={commentWindowOpen}>Add comment</button>
             {commentWindowOpen ? < NewComment setCommentWindowOpen={setCommentWindowOpen} setComments={setComments} article_id={params.article_id} setCommentsExpanded={setCommentsExpanded}/> : null}
-            </div>
+            
             <div className="comments-dropdown">
-                <button className='show-comments-button' onClick={() => setCommentsExpanded(!commentsExpanded)}> show comments {commentsExpanded ? '-' : '+'}</button>
+            <button className='show-comments-button' onClick={() => setCommentsExpanded(!commentsExpanded)}>{commentsExpanded ? 'hide' : `show ${currentArticle.comment_count}` } comments </button>
+                {/* <button className='show-comments-button' onClick={() => setCommentsExpanded(!commentsExpanded)}> show comments {commentsExpanded ? '-' : '+'}</button> */}
                 {commentsExpanded && < CommentsList article_id={params.article_id} comments={comments} setComments={setComments}/>}
+            </div>
             </div>
         </section>
     }
