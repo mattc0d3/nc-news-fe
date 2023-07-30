@@ -85,7 +85,7 @@ const Article = () => {
             {commentWindowOpen ? < NewComment setCommentWindowOpen={setCommentWindowOpen} setComments={setComments} article_id={params.article_id} setCommentsExpanded={setCommentsExpanded}/> : null}
             
             <div className="comments-dropdown">
-            <button className='show-comments-button' onClick={() => setCommentsExpanded(!commentsExpanded)}>{commentsExpanded ? 'hide' : `show ${currentArticle.comment_count}`} comments </button>
+            <button className='show-comments-button' onClick={() => setCommentsExpanded(!commentsExpanded)}>{commentsExpanded ? 'hide' : `show ${currentArticle.comment_count}` } comments </button>
                 {/* <button className='show-comments-button' onClick={() => setCommentsExpanded(!commentsExpanded)}> show comments {commentsExpanded ? '-' : '+'}</button> */}
                 {commentsExpanded && < CommentsList article_id={params.article_id} comments={comments} setComments={setComments}/>}
             </div>
