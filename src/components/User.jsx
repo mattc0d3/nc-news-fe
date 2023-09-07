@@ -1,42 +1,32 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
-import { getArticles, getUserByUsername } from "../utils/apis"
+import { useParams, Link } from "react-router-dom"
+import { getArticles, getUserByUsername, getCommentsByUser } from "../utils/apis"
+import { countVotes } from "../utils/countVotes"
 import ClipLoader from "react-spinners/ClipLoader";
 
 const User = () => {
 
     const params = useParams()
 
-    // console.log(params, "<<<< params in User")
-
     const [userProfile, setUserProfile] = useState({})
-    const [userArticles, setUserArticles] = useState([])
+    const [userArticles, setUserArticles] = useState({})
+    const [userComments, setUserComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
-    // console.log(params.username, "<<<<< username in User")
 
     useEffect(() => {
         getUserByUsername(params.username)
             .then(({ user }) => {
                 setUserProfile(user)
-                // console.log(user, "<<<< user after api call")
-                getArticles(author=userProfile.username)
-                    .then(articles => {
-                        console.log(articles, "<<<<< articles by user")
-                        setIsLoading(false)
-                    })
             })
-            .catch(err => {
-                setError(err.response)
+        getCommentsByUser(params.username)
+            .then(({ comments }) => {
+                setUserComments(comments)
+            })
+        getArticles(1, null, "desc", "created_at", params.username)
+            .then((data) => {
+                setUserArticles(data)
                 setIsLoading(false)
-            })
-    }, [params.username])
-
-    useEffect(() => {
-        getArticles(1, null, "desc", "author", userProfile.username)
-            .then(({articles}) => {
-                const filterArticles = articles.filter(article => article.author === params.username)
-                setUserArticles(filterArticles)
             })
     }, [params.username])
 
@@ -56,10 +46,14 @@ const User = () => {
     else {
         return <section className="page-content">
             <div className="profile-container">
-                <h3>{userProfile.username}</h3>
+                <div className="profile-info">
+                    <h3 id="profile-username">{userProfile.username}</h3>
+                    <p id="profile-name">({userProfile.name})</p>
+                    <p><span className="profile-stats">Total Votes:</span> {countVotes(userArticles.articles, userComments)}</p>
+                    <p><span className="profile-stats">Articles:</span> {userArticles.totalArticles}</p>
+                    <p><span className="profile-stats">Comments:</span> {userComments.length}</p>
+                </div>
                 <img className="profile-img" src={userProfile.avatar_url} alt={`avatar for ${userProfile.username}`} />
-                <p>{userProfile.name}</p>
-                <p>Articles written: {userArticles.length}</p>
             </div>
         </section>
     }
