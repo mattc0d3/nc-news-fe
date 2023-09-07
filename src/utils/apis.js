@@ -3,7 +3,6 @@ import axios from 'axios'
 const api = axios.create({ baseURL: 'https://nc-news-api-45fk.onrender.com/api' })
 
 export const getArticles = (resultsPage = 1, topic = null, order = "desc", sortBy = "created_at", author = null) => {
-    console.log(author, "<<<< author in api")
     const params = {
         p: resultsPage,
         total_count: true,
@@ -48,5 +47,10 @@ export const deleteComment = (comment_id) => {
 
 export const getUserByUsername = (username) => {
     return api.get(`users/${username}`)
+        .then(res => res.data)
+}
+
+export const getCommentsByUser = (username) => {
+    return api.get(`users/${username}/comments`)
         .then(res => res.data)
 }

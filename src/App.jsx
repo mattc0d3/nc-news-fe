@@ -7,6 +7,7 @@ import Article from './components/Article'
 import ErrorPage from './components/ErrorPage'
 import User from './components/User'
 import { getTopics } from './utils/apis'
+import ResultsList from './components/ResultsList'
 
 function App() {
   const [allTopics, setAllTopics] = useState([])
@@ -26,6 +27,7 @@ function App() {
         < Route path="/:topic" element={<Home allTopics={allTopics} />} />
         < Route path="*" element={<ErrorPage />} />
         < Route path="/users/:username" element={<User />} />
+        < Route path="users/:username/articles" element={<ResultsList />} />
       </Routes>
     </main>
   )

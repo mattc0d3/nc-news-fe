@@ -3,6 +3,7 @@ import compareDate from "../utils/compareDate"
 import { UserContext } from "../contexts/User"
 import { useContext, useState } from "react"
 import { deleteComment } from "../utils/apis"
+import { Link } from 'react-router-dom'
 
 const CommentCard = ({ comment, setComments, deletingComment, setDeletingComment }) => {
     const { user, setUser } = useContext(UserContext)
@@ -32,7 +33,7 @@ const CommentCard = ({ comment, setComments, deletingComment, setDeletingComment
     return <li className="comment-card">
         <p>{comment.body}</p>
         <div className="comment-info">
-            <p className="comment-author">{comment.author}</p>
+            <p className="comment-author"><Link to={`/users/${comment.author}`}>{comment.author}</Link></p>
             {comment.author === user && <button className="delete-comment-button" onClick={confirmDelete} disabled={deletingComment}>{deleteButtonText}</button>}
             <p>Posted {compareDate(convertDate(comment.created_at))}</p>
         </div>

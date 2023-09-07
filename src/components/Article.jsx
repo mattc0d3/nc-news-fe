@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { getArticleById, patchArticleById } from '../utils/apis'
 import convertDate from '../utils/convertDate'
@@ -77,7 +77,7 @@ const Article = () => {
             {isVoteError ? <p className="vote-error">Something went wrong!</p> : null}
             <div className="article-container">
                 <h3 className="article-title">{currentArticle.title}</h3>
-                <p className="article-author">{currentArticle.author}</p>
+                <p className="article-author"><Link to={`/users/${currentArticle.author}`}>{currentArticle.author}</Link></p>
                 <img className="article-img" src={currentArticle.article_img_url} alt={currentArticle.title} />
                 <p className="article-date">{convertDate(currentArticle.created_at)}</p>
                 <p className="article-body">{currentArticle.body}</p>
